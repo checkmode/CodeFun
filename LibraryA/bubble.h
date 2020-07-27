@@ -8,4 +8,12 @@
 #define DECLSPEC
 #endif
 
-void sort_bubble(int arr[], int len);
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void DECLSPEC sort_bubble(int arr[], int len);
+
+#ifdef __cplusplus
+}
+#endif
