@@ -33,6 +33,6 @@
 
 [Bb]uild/
 
-!gtest/**
-!gtest/lib/*
+# !gtest/**
+# !gtest/lib/*
 

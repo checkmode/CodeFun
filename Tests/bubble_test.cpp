@@ -1,3 +1,4 @@
+#include "bubble.h"
 #include <gtest/gtest.h>
 #include <iostream>
 #include <vector>
@@ -33,5 +34,9 @@ class TestSuiteSort : public ::testing::Test {
 TestData* TestSuiteSort::shared_exchange_ = NULL;
 
 TEST_F(TestSuiteSort, shared_exchange) {
+  EXPECT_EQ(2, 1 + 1);
+  int ss[] = {1, 3, 4, 33, 56, 21, 3, 8, 44, 6};
+  sort_bubble(ss, sizeof(ss) / sizeof(ss[0]));
+
   EXPECT_EQ(2, 1 + 1);
 }
