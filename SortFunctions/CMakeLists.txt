@@ -1,4 +1,7 @@
-add_library(SortFunctions SHARED bubble.cpp)
+
+file (GLOB SOURCE_FILES *.cpp)
+add_library(SortFunctions SHARED ${SOURCE_FILES})
+
 target_include_directories(SortFunctions
           INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
           )

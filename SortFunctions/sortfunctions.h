@@ -13,6 +13,7 @@ extern "C" {
 #endif
 
 void DECLSPEC sort_bubble(int arr[], int len);
+void DECLSPEC sort_quick(int arr[], int len);
 
 #ifdef __cplusplus
 }

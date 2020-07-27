@@ -59,11 +59,22 @@ TestData* TestSuiteSort::shared_exchange_ = NULL;
 TEST_F(TestSuiteSort, shared_exchange) {
   EXPECT_EQ(2, 1 + 1);
   if (0 < shared_exchange_->len) {
-    int* p = new int[shared_exchange_->len];
-    memcpy(p, shared_exchange_->data, shared_exchange_->len * sizeof(int));
-    sort_bubble(p, shared_exchange_->len);
-    printArray(p, shared_exchange_->len);
-    delete[] p;
+    int* bubble = new int[shared_exchange_->len];
+    memcpy(bubble, shared_exchange_->data, shared_exchange_->len * sizeof(int));
+    sort_bubble(bubble, shared_exchange_->len);
+    printArray(bubble, shared_exchange_->len);
+
+    int* quick = new int[shared_exchange_->len];
+    memcpy(quick, shared_exchange_->data, shared_exchange_->len * sizeof(int));
+    sort_quick(quick, shared_exchange_->len);
+    printArray(quick, shared_exchange_->len);
+
+    for (size_t i = 0; i < shared_exchange_->len; i++) {
+      ASSERT_EQ(quick[i], bubble[i]);
+    }
+
+    delete[] bubble;
+    delete[] quick;
   }
 
   EXPECT_EQ(2, 1 + 1);
