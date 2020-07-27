@@ -1,5 +1,5 @@
 #include <iostream>
-#include "bubble.h"
+#include "sortfunctions.h"
 
 int main(int, char**) {
   int aa[] = {1, 3, 45, 10, 34, 30, 4, 8, 33};
