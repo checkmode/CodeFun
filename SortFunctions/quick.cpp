@@ -1,58 +1,32 @@
 
 #include "sortfunctions.h"
 
-void innerquicksort(int* arr, int startIndex, int endIndex);
+void quickSort(int arr[], int left, int right);
 
 void sort_quick(int* arr, int len) {
-  innerquicksort(arr, 0, len);
+  quickSort(arr, 0, len - 1);
 }
 
-int partition(int* arr, int startIndex, int endIndex) {
-  int left = startIndex;
-  int right = endIndex;
-  int pivot = arr[startIndex];
-
-  while (true) {
-    // left -> right
-    while (arr[left] <= pivot) {
-      left++;
-      if (left == right) {
-        break;
-      }
-    }
-
-    // right -> left
-    while (pivot < arr[right]) {
-      right--;
-      if (left == right) {
-        break;
-      }
-    }
-
-    // meet
-    if (left >= right) {
-      break;
-    }
-
-    // exchange
-    int temp = arr[left];
-    arr[left] = arr[right];
-    arr[right] = temp;
-  }
-
-  //
-  int temp = arr[startIndex];
-  arr[startIndex] = arr[right];
-  arr[right] = temp;
-  return right;
-}
-
-void innerquicksort(int arr[], int startIndex, int endIndex) {
-  if (endIndex <= startIndex) {
+void quickSort(int arr[], int left, int right) {
+  if (left >= right)
     return;
+  int i, j, base, temp;
+  i = left, j = right;
+  base = arr[left];
+  while (i < j) {
+    while (arr[j] >= base && i < j)
+      j--;
+    while (arr[i] <= base && i < j)
+      i++;
+    if (i < j) {
+      temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+    }
   }
 
-  int pivotIndex = partition(arr, startIndex, endIndex);
-  innerquicksort(arr, startIndex, pivotIndex - 1);
-  innerquicksort(arr, pivotIndex + 1, endIndex);
+  arr[left] = arr[i];
+  arr[i] = base;
+  quickSort(arr, left, i - 1);
+  quickSort(arr, i + 1, right);
 }
