@@ -3,11 +3,12 @@
 
 void printfMaster()
 {
-	printf("printf master");
+	printf("printf master haha");
 }
 
 int sayHello()
 {
+	printf("in sayHello\n");
 	printfMaster();
 	return 0;
 }
